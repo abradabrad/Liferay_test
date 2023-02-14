@@ -31,7 +31,7 @@ public class TestPortletRenderCommand implements MVCRenderCommand
         System.out.println("processAction" + renderRequest);
         getUsersList(renderRequest);
 
-        return "view_user.jsp";
+        return "/view_user.jsp";
     }
 
     private void getUsersList(RenderRequest actionRequest) {
@@ -48,7 +48,7 @@ public class TestPortletRenderCommand implements MVCRenderCommand
                 .forEach(resultString::append);
 
         actionRequest.setAttribute("LIST_USERS", resultString);
-        System.out.println(actionRequest.getAttribute("LIST_USERS"));
+        //System.out.println(actionRequest.getAttribute("LIST_USERS"));
         System.out.println("resultString getUsersList: " + resultString);
     }
 /*
@@ -81,7 +81,7 @@ public class TestPortletRenderCommand implements MVCRenderCommand
         } catch (PortalException e) {
             e.printStackTrace();
         }
-        System.out.println("birthday " + birthday);
+        //System.out.println("birthday " + birthday);
 
         List<Organization> orgs = new ArrayList<>();
         try {
@@ -89,7 +89,7 @@ public class TestPortletRenderCommand implements MVCRenderCommand
         } catch (PortalException e) {
             e.printStackTrace();
         }
-        System.out.println("orgs " + orgs);
+        //System.out.println("orgs " + orgs);
 
             return "".concat(
                     String.valueOf(user.getUserId())

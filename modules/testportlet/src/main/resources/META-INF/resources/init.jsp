@@ -3,7 +3,7 @@
 <%@ page import="com.liferay.portal.kernel.service.UserLocalService" %>
 <%@ page import="com.liferay.portal.kernel.util.Constants" %>
 <%@ page import="com.liferay.portal.kernel.util.ParamUtil" %>
-
+<%@ page import="javax.portlet.PortletURL" %>
 <%@ page import="com.liferay.portal.kernel.util.WebKeys" %>
 <%@ page import="com.liferay.taglib.search.ResultRow" %>
 
@@ -21,4 +21,7 @@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 
 <%
     UserLocalService userLocalService = (UserLocalService) renderRequest.getAttribute("userLocalService");
+    PortletURL portletURL = renderResponse.createRenderURL();
+    String currentURL = portletURL.toString();
+
 %>

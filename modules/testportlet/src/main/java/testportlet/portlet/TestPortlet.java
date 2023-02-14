@@ -60,7 +60,7 @@ public class TestPortlet extends MVCPortlet {
 			throws IOException, PortletException {
 
 		request.setAttribute("userLocalService", getUserLocalService());
-		getUserFields(request);
+		//getUserFields(request);
 		getUsersList(request);
 		super.render(request, response);
 	}
