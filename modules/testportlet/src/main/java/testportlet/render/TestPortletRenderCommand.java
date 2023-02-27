@@ -11,7 +11,8 @@ import testportlet.constants.TestPortletKeys;
 
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
-import java.util.Objects;
+import java.util.Collections;
+import java.util.List;
 
 @Component(
         immediate = true,
@@ -31,16 +32,14 @@ public class TestPortletRenderCommand implements MVCRenderCommand
     }
 
     private void getUserFields(RenderRequest request) {
-        Long userId = ParamUtil.getLong(request, "userId");
-        User user = null;
+        List<User> user;
         try {
-            user = userLocalService.getUser(userId);
+            user = Collections.singletonList(userLocalService.getUser(ParamUtil.getLong(request, "userId")));
         } catch (PortalException e) {
+            user = Collections.emptyList();
             e.printStackTrace();
         }
-        if (Objects.nonNull(user)) {
-            request.setAttribute("USER", user);
-        }
+        request.setAttribute("USER", user);
     }
 
     @Reference

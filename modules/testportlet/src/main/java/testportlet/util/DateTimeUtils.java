@@ -1,28 +1,20 @@
 package testportlet.util;
 
+import java.text.SimpleDateFormat;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Objects;
 
 public class DateTimeUtils {
 
-    final static String PATTERN = "dd-MM-yyyy ã.";
 
-    public static String dateToString (Date date) {
-        return  DateTimeFormatter.ofPattern(PATTERN)
-                .withLocale(new Locale("ru"))
-                .format(date
-                        .toInstant()
-                        .atZone(ZoneId.systemDefault())
-                        .toLocalDate()
-                );
-    }
-
-    public static String dateToString (Date date, FormatStyle formatStyle) {
-        return  DateTimeFormatter
-                .ofLocalizedDate(formatStyle)
+    public static String dateToString (Date date, String pattern) {
+        if (Objects.isNull(date)) {
+            return "";
+        }
+        return  DateTimeFormatter.ofPattern(pattern)
                 .withLocale(new Locale("ru"))
                 .format(date
                         .toInstant()

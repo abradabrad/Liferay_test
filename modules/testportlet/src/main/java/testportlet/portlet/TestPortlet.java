@@ -40,18 +40,10 @@ import java.util.List;
 )
 public class TestPortlet extends MVCPortlet {
 
-	public UserLocalService getUserLocalService() {
-		return userLocalService;
-	}
-
-	@Reference
-	private volatile UserLocalService userLocalService;
-
 	@Override
 	public void render(RenderRequest request, RenderResponse response)
 			throws IOException, PortletException {
 
-		request.setAttribute("userLocalService", getUserLocalService());
 		ThemeDisplay td = (ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY);
 		List<Role> roles = null;
 		try {
