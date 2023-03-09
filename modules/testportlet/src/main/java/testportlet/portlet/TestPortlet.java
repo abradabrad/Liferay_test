@@ -4,11 +4,9 @@ import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.model.Role;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
 import com.liferay.portal.kernel.service.RoleServiceUtil;
-import com.liferay.portal.kernel.service.UserLocalService;
 import com.liferay.portal.kernel.theme.ThemeDisplay;
 import com.liferay.portal.kernel.util.WebKeys;
 import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.annotations.Reference;
 import testportlet.constants.TestPortletKeys;
 import testportlet.util.UserUtils;
 
@@ -56,5 +54,4 @@ public class TestPortlet extends MVCPortlet {
 
 		super.render(request, response);
 	}
-
 }

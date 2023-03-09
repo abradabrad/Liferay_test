@@ -32,11 +32,11 @@ public class TestPortletRenderCommand implements MVCRenderCommand
     }
 
     private void getUserFields(RenderRequest request) {
-        List<User> user;
+        User user;
         try {
-            user = Collections.singletonList(userLocalService.getUser(ParamUtil.getLong(request, "userId")));
+            user = userLocalService.getUser(ParamUtil.getLong(request, "userId"));
         } catch (PortalException e) {
-            user = Collections.emptyList();
+            user = null;
             e.printStackTrace();
         }
         request.setAttribute("USER", user);
