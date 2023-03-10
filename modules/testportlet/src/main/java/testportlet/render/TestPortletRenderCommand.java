@@ -17,13 +17,12 @@ import java.util.List;
 @Component(
         immediate = true,
         property = {
-                "javax.portlet.name="+ TestPortletKeys.TEST,
+                "javax.portlet.name=" + TestPortletKeys.TEST,
                 "mvc.command.name=/render"
         },
         service = MVCRenderCommand.class
 )
-public class TestPortletRenderCommand implements MVCRenderCommand
-{
+public class TestPortletRenderCommand implements MVCRenderCommand {
 
     @Override
     public String render(RenderRequest renderRequest, RenderResponse renderResponse) {
@@ -32,11 +31,10 @@ public class TestPortletRenderCommand implements MVCRenderCommand
     }
 
     private void getUserFields(RenderRequest request) {
-        User user;
+        User user = null;
         try {
             user = userLocalService.getUser(ParamUtil.getLong(request, "userId"));
         } catch (PortalException e) {
-            user = null;
             e.printStackTrace();
         }
         request.setAttribute("USER", user);
