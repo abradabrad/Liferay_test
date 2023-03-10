@@ -18,6 +18,7 @@
 <portlet:defineObjects/>
 
 <%
+    TestPortletUserService testPortletUserService = new TestPortletUserService();
     PortletURL portletURL = renderResponse.createRenderURL();
     String currentURL = portletURL.toString();
 %>

@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 
 public class TestPortletUserService {
 
-    public static List<Role> getCurrentUserRoles(RenderRequest request) {
+    public List<Role> getCurrentUserRoles(RenderRequest request) {
         ThemeDisplay td = (ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY);
         try {
             return RoleServiceUtil.getUserRoles(td.getUserId());
@@ -28,7 +28,7 @@ public class TestPortletUserService {
         }
     }
 
-    public static List<User> getUsersWithRoles(RenderRequest request) {
+    public List<User> getUsersWithRoles(RenderRequest request) {
 
         return UserLocalServiceUtil.getUsers(0, UserLocalServiceUtil.getUsersCount())
                 .stream()
@@ -41,7 +41,7 @@ public class TestPortletUserService {
                 .collect(Collectors.toList());
     }
 
-    public static String getOrganizations(User user) {
+    public String getOrganizations(User user) {
         try {
             return user.getOrganizations()
                     .stream()
@@ -55,7 +55,7 @@ public class TestPortletUserService {
         }
     }
 
-    public static String getPhones(User user) {
+    public String getPhones(User user) {
         return user.getPhones()
                 .stream()
                 .map(Phone::getNumber)
@@ -64,12 +64,12 @@ public class TestPortletUserService {
                 );
     }
 
-    public static List<User> getUsers(RenderRequest request, int start, int end) {
+    public List<User> getUsers(RenderRequest request, int start, int end) {
 
-        return ListUtil.subList(TestPortletUserService.getUsersWithRoles(request), start, end);
+        return ListUtil.subList(getUsersWithRoles(request), start, end);
     }
 
-    public static Integer getUsersCount(RenderRequest request) {
+    public Integer getUsersCount(RenderRequest request) {
         return getUsersWithRoles(request).size();
     }
 }
